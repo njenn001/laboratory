@@ -1,0 +1,6 @@
+numpy 
+cython 
+flask 
+matplotlib
+pyspark
+pandas

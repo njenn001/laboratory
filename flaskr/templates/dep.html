@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1> RTDA Server </h1>
+{% endblock %}
+
+{% block content %}
+<div class="topnav">
+    <div class="topnav-centered">
+        <a href="/quickstart">Quick Start</a>
+    </div>
+
+    <a href="/background">Background</a>
+    <a href="/dependencies" class="active">Dependencies</a>
+    
+
+    <div class="topnav-right">
+        <a href="/broker">Broker</a>
+        <a href="/zoo">Zookeeper</a>
+    </div>
+</div>
+
+
+
+
+{% endblock %}
+
+{% block footer %}
+    <p>Noah Jennings & Vincent Houston </p>
+    <p>National Aeronautics and Space Administration </p>
+    <p>Old Dominion University </p>
+    <p>&copy; Copyright 2022</p> 
+{% endblock %}
+

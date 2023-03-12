@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+    <head>
+        {% block head %}
+        <link rel="stylesheet" href="{{ style }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>{% block title %}{% endblock %}</title>
+        {% endblock %}
+    </head>
+    <body>
+      <div class = "header" id="header">
+
+          {% block header %}{% endblock %}
+
+      </div>
+
+      {% block content %}{% endblock %}
+      
+      <div class = "footer" id="footer">
+          {% block footer %}{% endblock %}
+      </div>
+    </body>
+</html>
