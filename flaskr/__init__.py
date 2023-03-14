@@ -1,71 +1,121 @@
+""" Common Flask server __init__.py. 
+
+Will design different facets of the server and actions 
+taken when communicated with. 
+
+"""
+
+""" Imports. """
 import os
 from urllib import request
 from flask import * 
  
 from obj.user import User
 
-# Set rules (directories) to server
+""" Sets the rules for the server. 
+
+@param app: The Flask application
+@type app: app
+"""
 def set_rules(app):
     app.add_url_rule('/index', endpoint='index')
     app.add_url_rule('/background', endpoint='background') 
 
-# Set error handlers 
+""" Sets the error handlers on the server. 
+
+@param app: The Flask application
+@type app: app
+"""
 def set_errors(app): 
 
     @app.errorhandler(404)
     def page_not_found(error):
         return render_template('404.html'), 404
 
-# set app methods 
+""" Sets the server methods. 
+
+@param app: The Flask application
+@type app: app
+"""
 def set_methods(app): 
 
     index_methods = ['GET']
     background_methods = ["GET"]
 
-    # Get simple index page 
+    """ Defines the basic index route.
+            
+    :returns: A template rendering
+    :rtype: template
+    """
     @app.route('/', methods = index_methods)
     def index():
        
         return render_template('index.html',style=url_for('static', filename='index.css'))
 
-    # REWRITE
-    # Background headquarters 
+    """ Defines the background route.
+            
+    :returns: A template rendering
+    :rtype: template
+    """
     @app.route('/background', methods = background_methods)
     def background():
         content_type = request.headers.get('Content-Type')
         
-# Set app instance 
+""" Sets the app instance. 
+
+@param app: The Flask application
+@type app: app
+"""
 def set_instance(app): 
-    # ensure the instance folder exists
+
+    """ Ensure the instance folder exists. """
     try:
         os.makedirs(app.instance_path)
     except OSError:
         pass
 
-# Set app configurations
+""" Sets the server methods. 
+
+@param app: The Flask application
+@type app: app
+
+@param test_config: Configuration file. 
+@type test_config: str
+"""
 def set_config(app, test_config): 
+
     if test_config is None:
-        # load the instance config, if it exists, when not testing
+
+        """ Load the static config. """
         app.config.from_pyfile('config.py', silent=True)
+
     else:
-        # load the test config if passed in
+
+        """ Load an test the passed config. """
         app.config.from_mapping(test_config)
 
-# Create the Flask app 
+""" Creates the Flask application. 
+
+@param test_config: Configuration file.
+@type test_config: str
+"""
 def create_app(test_config=None):
     
-    # create and configure the app
+    """ Create and configure the app. """
     app = Flask(__name__, instance_relative_config=True, static_url_path='/static')
     
+    """ Further configurations. """
     app.config.from_mapping(
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
     )
 
+    """ Runs different setups. """
     set_config(app, test_config)
     set_instance(app) 
     set_methods(app)
     set_rules(app)
     set_errors(app)
 
+    """ Returns the configure application. """
     return app
