@@ -1,6 +1,8 @@
 numpy 
 cython 
-flask 
+Flask 
+Flask-RESTful
 matplotlib
 pyspark
 pandas
+pytest

@@ -8,43 +8,20 @@ class User():
         
         Attributes
         ----------
-        os_name : str
-        style : str 
-        py_version : str 
-        root_dir : str 
-
-        t_list : list 
-        virt_thread : threading.Thread
-        vcheck_thread : threading.Thread 
-        run_thread : threading.Thread 
-
-        you : user.User 
-        args : list
-        app : flask.App
+        content_type : str
+        username : str 
+        pin : str 
+        creds : dict
+        existence : bool
 
         Methods
         -------
 
         get/set_attributes
             Returns or sets each individual attribute. 
-        init
-            Creates scenario instance.
-        clear_screen
-            Clears the terminal. 
-        clean_sequence
-            Cleans the file structure. 
-        throw_exec
-            Throws any programmed exceptions. 
-        stop_thread
-            Stops all thread. 
-        start
-            Runs the scenario evaluation.
-        os_eval
-            Evaluates the operating system. 
-        version_check
-            Checks the Python version.
-        virtual_init
-            Initializes the virtual environment. 
+        __init__
+            Creates user instance.
+        
     """
     
     """ Initialize the user. 

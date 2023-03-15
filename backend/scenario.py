@@ -2,7 +2,9 @@
 from lib2to3.pgen2.pgen import DFAState
 import os 
 import threading
-import time 
+import time
+
+from backend.server import Server 
 
 """ Scenario class. """
 class Scenario(): 
@@ -18,13 +20,10 @@ class Scenario():
         style : str 
         py_version : str 
         root_dir : str 
-
         t_list : list 
         virt_thread : threading.Thread
         vcheck_thread : threading.Thread 
         run_thread : threading.Thread 
-
-        you : user.User 
         args : list
         app : flask.App
 
@@ -33,7 +32,7 @@ class Scenario():
 
         get/set_attributes
             Returns or sets each individual attribute. 
-        init
+        __init__
             Creates scenario instance.
         clear_screen
             Clears the terminal. 
@@ -69,9 +68,9 @@ class Scenario():
         self.virt_thread = None
         self.vcheck_thread = None 
         self.run_thread = None 
-        self.you = None
         self.args = None 
         self.app = None 
+        self.server = None 
         
         """ Further initialization. """
         self.init() 
@@ -212,22 +211,6 @@ class Scenario():
     def set_run_thread(self, run_thread): 
         self.run_thread = run_thread
 
-    """ Returns the scenarios user. 
-    
-    @return you : The user
-    @rtype you : user.User
-    """
-    def get_you(self): 
-        return self.you
-    
-    """ Sets the scenarios user. 
-    
-    @param you : Project user
-    @type you : obj.User
-    """
-    def set_you(self, you): 
-        self.you = you 
-        
     """ Returns the scenarios arguments. 
     
     @return args : The argumnets
@@ -260,17 +243,32 @@ class Scenario():
     def set_app(self, app): 
         self.app = app 
 
+    """ Returns the scenarios server. 
+    
+    @return server : The server
+    @rtype server : server.Server
+    """
+    def get_server(self): 
+        return self.server
+    
+    """ Sets the scenarios server. 
+    
+    @param server : The server
+    @type server : server.Server
+    """
+    def set_server(self, server): 
+        self.server = server 
+
+
     """ Further init scripts. 
     
     @return none
     """
     def init(self): 
 
-        #self.clear_screen() 
+        #self.clear_sequence()
         self.os_eval() 
         self.version_check() 
-        #self.clean_sequence() 
-        #self.virtual_init() 
                 
     """ Starts the application. 
     
@@ -280,6 +278,7 @@ class Scenario():
         import flaskr
         
         try: 
+            self.set_server(Server(self))
             self.set_app(flaskr.create_app().run())
             self.set_run_thread( threading.Thread(target=self.get_app, args=([])) )
             self.add_thread(self.get_run_thread())

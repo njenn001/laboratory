@@ -3,7 +3,7 @@ from os import system, name
 import sys 
 import argparse
 
-from obj.scenario import Scenario 
+from backend.scenario import Scenario 
 
 """ TC API Logo. """
 logo = (r''' 

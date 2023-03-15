@@ -6,12 +6,12 @@ taken when communicated with.
 """
 
 """ Imports. """
+import json
 import os
 from urllib import request
 from flask import * 
  
-from obj.user import User
-
+from backend.server import Server
 """ Sets the rules for the server. 
 
 @param app: The Flask application
@@ -39,19 +39,49 @@ def set_errors(app):
 """
 def set_methods(app): 
 
-    index_methods = ['GET']
-    background_methods = ["GET"]
+    index_methods = ['GET', 'POST']
+    background_methods = ['GET', 'POST']
 
-    """ Defines the basic index route.
+    """ Defines the main route of the server.
+    "localhost:5000/"
             
-    :returns: A template rendering
+    :returns: A template rendering or json response.
     :rtype: template
     """
     @app.route('/', methods = index_methods)
     def index():
        
-        return render_template('index.html',style=url_for('static', filename='index.css'))
+        """ Check for .arguments """
+        if (request.method == 'GET'):  
+            try: 
+                os.system('echo web user')
+                return render_template('index.html',style=url_for('static', filename='index.css'))
+         
+            except Exception as ex: 
+                return render_template('404.html',style=url_for('static', filename='index.css'))
+                
+        if (request.method == 'POST'): 
+            try: 
 
+                data = json.loads(request.data)
+
+                ret = {
+                    "Username" : data['username']
+                }
+                os.system("echo command line user. ")
+                
+                return jsonify(ret)
+            
+            except Exception as ex: 
+
+                """ Set the return/display information. """
+                data = {
+                    "Message" : "Failure to communicate."
+                }
+
+                os.system("echo command line user. ")
+                return jsonify(data)
+            
     """ Defines the background route.
             
     :returns: A template rendering
@@ -59,7 +89,30 @@ def set_methods(app):
     """
     @app.route('/background', methods = background_methods)
     def background():
-        content_type = request.headers.get('Content-Type')
+        
+        """ Check for request type. """
+        if (request.method == 'GET'): 
+
+            try: 
+
+                """ Set the return/display information. """
+                data = {
+                    "Message" : "Hello, I am the TC Laboratory API informer. I can help guide you through the server."
+                }
+
+                os.system("echo hello again.")
+                
+                return render_template('index.html',style=url_for('static', filename='index.css'))
+
+                #return jsonify(data)
+
+            except Exception as ex: 
+
+                data = {
+                    "Exception" : ex, 
+                    "Solution" : "Check input json."
+                } 
+                return jsonify(data)
         
 """ Sets the app instance. 
 
@@ -100,7 +153,7 @@ def set_config(app, test_config):
 @type test_config: str
 """
 def create_app(test_config=None):
-    
+
     """ Create and configure the app. """
     app = Flask(__name__, instance_relative_config=True, static_url_path='/static')
     
