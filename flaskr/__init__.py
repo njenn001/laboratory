@@ -5,13 +5,25 @@ taken when communicated with.
 
 """
 
-""" Imports. """
+""" Prebuilt imports. """
 import json
 import os
 from urllib import request
 from flask import * 
  
+""" Class imports. """
 from backend.server import Server
+
+""" Throws exception. 
+
+@param msg : The message. 
+@type msg : str
+"""
+def throw_exec(msg): 
+
+    if 'index' in msg: 
+        return render_template('404.html',style=url_for('static', filename='index.css'))
+
 """ Sets the rules for the server. 
 
 @param app: The Flask application
@@ -39,7 +51,7 @@ def set_errors(app):
 """
 def set_methods(app): 
 
-    index_methods = ['GET', 'POST']
+    index_methods = ['GET']
     background_methods = ['GET', 'POST']
 
     """ Defines the main route of the server.
@@ -51,37 +63,14 @@ def set_methods(app):
     @app.route('/', methods = index_methods)
     def index():
        
-        """ Check for .arguments """
-        if (request.method == 'GET'):  
-            try: 
+        try: 
+            """ Check for .arguments """
+            if (request.method == 'GET'):  
                 os.system('echo web user')
                 return render_template('index.html',style=url_for('static', filename='index.css'))
-         
-            except Exception as ex: 
-                return render_template('404.html',style=url_for('static', filename='index.css'))
-                
-        if (request.method == 'POST'): 
-            try: 
+        except Exception as ex: 
+            return throw_exec('index') 
 
-                data = json.loads(request.data)
-
-                ret = {
-                    "Username" : data['username']
-                }
-                os.system("echo command line user. ")
-                
-                return jsonify(ret)
-            
-            except Exception as ex: 
-
-                """ Set the return/display information. """
-                data = {
-                    "Message" : "Failure to communicate."
-                }
-
-                os.system("echo command line user. ")
-                return jsonify(data)
-            
     """ Defines the background route.
             
     :returns: A template rendering

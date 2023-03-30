@@ -1,33 +1,21 @@
 {% extends 'base.html' %}
 
-{% block header %}
-    <h1> Laboratory Server </h1>
-{% endblock %}
-
 {% block content %}
-<div class="topnav">
-    <div class="topnav-centered">
-        <a href="/quick">Quick Start</a>
+    <div 
+        class="container"
+        style="background-color: darkgray;">
+
+        <div 
+            class="footer"
+            style="top:50%">
+            <img 
+                src="static/images/tc_logo_transparent.png"
+                style="width: 45%;">
+
+            <br> 
+
+            <p> TC Laboratories (c) 2023 </p>
+            <p> Server landing page </p>
+        </div>
     </div>
-
-    <a href="/background">Background</a>
-    <a href="/dependencies">Dependencies</a>
-    
-
-    <div class="topnav-right">
-        <a href="/"></a>
-        <a href="/"></a>
-    </div>
-</div>
-
-{% endblock %}
-
-{% block footer %}
-<div class="container">
-    <div class="text">
-        <p>Noah Jennings</p>
-    </div>
-
-</div>
-
 {% endblock %}
