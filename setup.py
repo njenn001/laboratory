@@ -1,16 +1,22 @@
+""" Prebuilt imports. """
 import os
 import sys 
 from setuptools import setup
 import distutils.core
 from distutils.command.install import install
 
-# Utility function to read the README file.
-# Used for the long_description.  It's nice, because now 1) we have a top level
-# README file and 2) it's easier to type in the README file than to put a raw
-# string in below ...
+""" Reads the readme file. 
+
+@param fname : The readme file. 
+@type fname : str
+"""
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
+""" Set different application identifiers.
+
+@return null 
+"""
 setup(
     name = "TC Laboratory API",
     version = "0.0.0",

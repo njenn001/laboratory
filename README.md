@@ -18,9 +18,15 @@ This repository was developed for use during the instruction of basic and advanc
     - Looping 
     - System Analysis 
 
+## Software Requirements
+
+```
+  - python 3.11
+```
+
 ## Usage 
 
-The server is spun by simply pulling the repo and using one of the starting methods (machine dependent). 
+The server is spun by simply pulling the repo and using one of the starting methods (machine dependent). Please satisfy listed software requirements prior to running the server. 
 
 ### Windows machines 
 
@@ -34,6 +40,21 @@ System configurations
 ```
 set FLASK_APP=flaskr
 set FLASK_ENV=development
+```
+
+Initialize the virtual environment
+```
+python __init__.py --v
+```
+
+Activate the virtual environment 
+```
+.\venv\Scripts\activate
+```
+
+Start the server
+```
+python __init__.py --r
 ```
 
 ### Linux machines 

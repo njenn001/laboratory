@@ -1,5 +1,18 @@
+<!-- 
+    The 404 error page page. 
+
+    This file extends the base.html structure:
+    > content 
+-->
 {% extends 'base.html' %}
 
+<!--
+
+    The content block. 
+
+    Used to display the current pages information:
+    > 404 error 
+-->
 {% block content %}
         <h1>{% block title %} 404 Not Found. {% endblock %}</h1>
         <p>OOPS! Sammy couldn't find your page; looks like it doesn't exist.</p>

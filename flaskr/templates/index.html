@@ -1,5 +1,19 @@
+<!-- 
+    The landing page. 
+
+    This file extends the base.html structure:
+    > content 
+    > footer
+-->
 {% extends 'base.html' %}
 
+<!--
+
+    The content block. 
+
+    Used to display the current pages information:
+    > image 
+-->
 {% block content %}
     <div 
         class="container"
@@ -7,17 +21,42 @@
 
         <div 
             class="footer"
-            style="top:50%">
+            style="padding-top: 85%">
+
+            <!-- Clickable image. -->
             <a href="{{ url_for('info') }}"> 
                 <img 
                     src="static/images/tc_logo_transparent.png",
                     style="width: 55%;">
 
             </a>
-
-            <p> </p>
-            <p> TC Laboratories (c) 2023 </p>
-            <p> Server landing page </p>
         </div>
     </div>
+{% endblock %}
+
+<!-- 
+
+    The footer block.
+    
+    Used to display laboratory descriptors.
+    > legal info
+    > behind-the-scenes
+-->
+{% block footer %}
+
+    <!--
+
+        The footer. 
+
+        Displays important general inforamation: 
+        > copyright 
+        > page info
+    -->
+    <div 
+        class="footer">
+        <p> </p>
+        <p> TC Laboratories (c) 2023 </p>
+        <p> </p>
+    </div>
+
 {% endblock %}

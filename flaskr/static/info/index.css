@@ -1,3 +1,6 @@
+/* 
+  This is the design for the body. 
+*/
 .body {
   position: absolute;
   background-color: darkgray;
@@ -17,12 +20,18 @@
   display: block;
 }
 
+/*  
+  This is the design for the header. 
+*/
 .header { 
   color: white;
   margin: 0px; 
   justify-content: center;
 }
 
+/* 
+  This is the design for the footer. 
+*/
 .footer {
   width: 100%;
   bottom: 0px;
@@ -34,6 +43,9 @@
   display: block;
 }
 
+/* 
+  This is the design for the containers. 
+*/
 .container{
 
   bottom: 0px;
@@ -44,6 +56,9 @@
 
 }
 
+/* 
+  This is the design for the options. 
+*/
 .option{
 
   display: block;
@@ -52,6 +67,9 @@
 
 }
 
+/* 
+  This is the design for the buttons. 
+*/
 .button {
   border: none;
   color: white;
@@ -62,23 +80,37 @@
   font-family: 'Courier New', Courier, monospace;
 }
 
+/* 
+  This is the design for the first button. 
+*/
 .button1 {
   background-color: transparent;
   color: black; 
   border: 2px solid rgb(126, 140, 154);
 }
 
+/* 
+  This is the design for the first button's
+  hover effect. 
+*/
 .button1:hover {
   background-color: rgb(40, 159, 198);
   color: white;
 }
 
+/* 
+  This is the design for the second button. 
+*/
 .button2 {
   background-color: white; 
   color: black; 
   border: 2px solid #296e85;
 }
 
+/* 
+  This is the design for the second button's
+  hover effect. 
+*/
 .button2:hover {
   background-color: rgb(40, 159, 198);
   color: white;

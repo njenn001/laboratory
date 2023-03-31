@@ -1,10 +1,39 @@
+<!-- 
+    The home page. 
+
+    This file extends the base.html structure:
+    > content 
+    > footer
+-->
 {% extends 'base.html' %}
 
+<!--
+
+    The content block. 
+
+    Used to display the current pages information:
+    > navbar
+    > buttons
+-->
 {% block content %}
+
+    <!-- 
+
+        A Navigation bar. 
+
+        Bootstrap 5 extension for containing and style:
+        > icon
+        > redirection
+        > sticky
+    -->
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+        
+        <!-- Fluid container. -->
         <div 
             class="container-fluid"
             style="display:block">
+
+            <!-- Clickable image. -->
             <a class="navbar-brand" href="/index">
                 <img 
                     src="../static/images/tc_logo_transparent.png" 
@@ -14,28 +43,55 @@
         </div>
     </nav>
 
+    <!-- 
+
+        This pages options. 
+
+        Displays general server information: 
+        > image
+        > descriptors
+    -->
     <div 
         class="option"
         style="background-color: darkgray;">
 
-        <a> 
-            <img 
-                src="../static/images/LAN.png",
-                style="min-width: 300px">
+        <!-- Image. -->
+        <img 
+            src="../static/images/LAN.png",
+            style="min-width: 300px">
 
-        </a>
         
+        <!-- 
+
+            The button option. 
+
+            Routes different actions. 
+            > redirection
+        -->
         <div class="option">
-                                           
-            <button class="button button1">
-                Quickstart
-            </button>
-            <button class="button button1">
-                Background
-            </button>
-            <button class="button button1">
-                Dependencies
-            </button>
+                                  
+            <!-- 
+                
+                Button cluster.
+            
+                Styled: 
+                > clickable
+            -->
+            <a href="">
+                <button class="button button1">
+                    Quickstart
+                </button>
+            </a>
+            <a href="">
+                <button class="button button1">
+                    Background
+                </button>
+            </a>
+            <a href="">
+                <button class="button button1">
+                    Dependencies
+                </button>
+            </a>
             <a href="https://github.com/njenn001/laboratory">
                 <button class="button button1">
                     Github
@@ -45,8 +101,24 @@
     </div>
 {% endblock %}
 
+<!-- 
+
+    The footer block.
+    
+    Used to display laboratory descriptors.
+    > legal info
+    > behind-the-scenes
+-->
 {% block footer %}
 
+    <!--
+
+        The footer. 
+
+        Displays important general inforamation: 
+        > copyright 
+        > page info
+    -->
     <div 
         class="footer">
         <p> </p>
