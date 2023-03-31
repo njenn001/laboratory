@@ -280,6 +280,7 @@ class Scenario():
         try: 
             self.set_server(Server(self))
             self.set_app(flaskr.create_app().run(host="0.0.0.0", debug=True))
+            #self.set_app(flaskr.create_app().run(debug=True))
             self.set_run_thread( threading.Thread(target=self.get_app, args=([])) )
             self.add_thread(self.get_run_thread())
         except Exception as ex: 

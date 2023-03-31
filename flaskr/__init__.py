@@ -22,7 +22,11 @@ from backend.server import Server
 def throw_exec(msg): 
 
     if 'index' in msg: 
-        return render_template('404.html',style=url_for('static', filename='index.css'))
+        os.system('echo index error')
+        return render_template('404.html'), 404
+    elif 'home' in msg: 
+        os.system('echo home error')
+        return render_template('404.html'), 404
 
 """ Sets the rules for the server. 
 
@@ -31,7 +35,10 @@ def throw_exec(msg):
 """
 def set_rules(app):
     app.add_url_rule('/index', endpoint='index')
-    app.add_url_rule('/background', endpoint='background') 
+    app.add_url_rule('/info', endpoint='info')
+    app.add_url_rule('/info/background', endpoint='background')
+    app.add_url_rule('/info/dependencies', endpoint='dependencies')
+     
 
 """ Sets the error handlers on the server. 
 
@@ -52,57 +59,42 @@ def set_errors(app):
 def set_methods(app): 
 
     index_methods = ['GET']
-    background_methods = ['GET', 'POST']
+    info_methods = ['GET']
 
     """ Defines the main route of the server.
     "localhost:5000/"
             
-    :returns: A template rendering or json response.
-    :rtype: template
+    :return render_template() : A template rendering or json response.
+    :rtype render_template() : template
     """
     @app.route('/', methods = index_methods)
     def index():
        
         try: 
-            """ Check for .arguments """
+            """ Check for arguments. """
             if (request.method == 'GET'):  
                 os.system('echo web user')
                 return render_template('index.html',style=url_for('static', filename='index.css'))
         except Exception as ex: 
             return throw_exec('index') 
 
-    """ Defines the background route.
-            
-    :returns: A template rendering
-    :rtype: template
+    """ Defines the home route. 
+    "localhost:5000/"
+
+    @return render_template() : 
+    @rtype render_template() : template 
     """
-    @app.route('/background', methods = background_methods)
-    def background():
-        
-        """ Check for request type. """
-        if (request.method == 'GET'): 
+    @app.route('/info/', methods = info_methods)
+    def info(): 
 
-            try: 
+        try: 
+            """ Check for arguments. """
+            if (request.method == 'GET'): 
+                os.system('echo web user')
+                return render_template('info/index.html',style=url_for('static', filename='info/index.css'))
+        except Exception as ex: 
+            return throw_exec('home')
 
-                """ Set the return/display information. """
-                data = {
-                    "Message" : "Hello, I am the TC Laboratory API informer. I can help guide you through the server."
-                }
-
-                os.system("echo hello again.")
-                
-                return render_template('index.html',style=url_for('static', filename='index.css'))
-
-                #return jsonify(data)
-
-            except Exception as ex: 
-
-                data = {
-                    "Exception" : ex, 
-                    "Solution" : "Check input json."
-                } 
-                return jsonify(data)
-        
 """ Sets the app instance. 
 
 @param app: The Flask application
