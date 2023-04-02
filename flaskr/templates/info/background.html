@@ -1,0 +1,144 @@
+<!-- 
+    The home page. 
+
+    This file extends the base.html structure:
+    > content 
+    > footer
+-->
+{% extends 'base.html' %}
+
+<!--
+
+    The content block. 
+
+    Used to display the current pages information:
+    > navbar
+    > buttons
+-->
+{% block content %}
+
+    <!-- 
+
+        A Navigation bar. 
+
+        Bootstrap 5 extension for containing and style:
+        > icon
+        > redirection
+        > sticky
+    -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+        
+        <!-- Fluid container. -->
+        <div 
+            class="container-fluid"
+            style="display:block">
+
+            <!-- Clickable image. -->
+            <a class="navbar-brand" href="/index">
+                <img 
+                    src="../static/images/tc_logo_transparent.png" 
+                    alt="TC Laboratory" 
+                    style="width:20%;"> 
+            </a>
+        </div>
+    </nav>
+
+    <!-- 
+
+        This pages options. 
+
+        Displays general server information: 
+        > image
+        > background
+    -->
+    <div 
+        class="option"
+        style="background-color: darkgray;">
+
+        <!-- Image. -->
+        <img 
+            src="../static/images/LAN.png",
+            style="min-width: 300px">
+
+        
+        <!-- 
+
+            The background option. 
+
+            Displays background information. 
+            > background
+        -->
+        <div class="option">
+
+            <div class="exert">
+
+                <!-- A title. -->
+                <h1>
+                    Background
+                </h1>
+                
+                <br>
+                <br>
+
+                <!-- The text. -->
+                <div class="option">
+                    <p style="padding: 15px">
+                            The purpose of the TC Laboratories API is to provide a robust, educational
+                        inferface to faciliate application development. All TC Laboratory Instruments 
+                        will rely on this API as well as any relevant academic events. 
+
+                    </p>
+                </div>
+                
+                <!-- 
+
+                    The back arrow. 
+
+                    Allows the user the return to the previous page: 
+                    > home/info
+                -->
+                <div class="option">
+                    <a href="../info"> 
+                        <img 
+                            src="../static/images/back_arrow.png",
+                            style="width: 50px">
+            
+                    </a>
+                </div>
+
+                <br>
+                <br>
+
+            </div>
+
+        </div>
+         
+    </div>
+{% endblock %}
+
+<!-- 
+
+    The footer block.
+    
+    Used to display laboratory descriptors.
+    > legal info
+    > behind-the-scenes
+-->
+{% block footer %}
+
+    <!--
+
+        The footer. 
+
+        Displays important general inforamation: 
+        > copyright 
+        > page info
+    -->
+    <div 
+        class="footer">
+        <p> </p>
+        <p> TC Laboratories (c) 2023 </p>
+        <p> Server landing page </p>
+    </div>
+
+{% endblock %}

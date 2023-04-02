@@ -27,6 +27,15 @@ def throw_exec(msg):
     elif 'home' in msg: 
         os.system('echo home error')
         return render_template('404.html'), 404
+    elif 'background' in msg: 
+        os.system('echo background error')
+        return render_template('404.html'), 404
+    elif 'dependencies' in msg: 
+        os.system('echo dependencies error')
+        return render_template('404.html'), 404
+    elif 'quickstart' in msg: 
+        os.system('echo quickstart error')
+        return render_template('404.html'), 404
 
 """ Sets the rules for the server. 
 
@@ -38,6 +47,7 @@ def set_rules(app):
     app.add_url_rule('/info', endpoint='info')
     app.add_url_rule('/info/background', endpoint='background')
     app.add_url_rule('/info/dependencies', endpoint='dependencies')
+    app.add_url_rule('/info/quickstart', endpoint='quickstart')
      
 
 """ Sets the error handlers on the server. 
@@ -60,6 +70,9 @@ def set_methods(app):
 
     index_methods = ['GET']
     info_methods = ['GET']
+    background_methods = ['GET']
+    dependencies_methdos = ['GET']
+    quickstart_methods = ['GET', 'POST']
 
     """ Defines the main route of the server.
     "localhost:5000/"
@@ -79,7 +92,7 @@ def set_methods(app):
             return throw_exec('index') 
 
     """ Defines the home route. 
-    "localhost:5000/"
+    "localhost:5000/info/"
 
     @return render_template() : 
     @rtype render_template() : template 
@@ -95,6 +108,57 @@ def set_methods(app):
         except Exception as ex: 
             return throw_exec('home')
 
+    """ Defines the background route. 
+    "localhost:5000/info/background"
+
+    @return render_template() : 
+    @rtype render_template() : template 
+    """
+    @app.route('/info/background', methods = background_methods)
+    def background(): 
+
+        try: 
+            """ Check for arguments. """
+            if (request.method == 'GET'): 
+                os.system('echo web user')
+                return render_template('info/background.html',style=url_for('static', filename='info/background.css'))
+        except Exception as ex: 
+            return throw_exec('background')
+        
+    """ Defines the dependencies route. 
+    "localhost:5000/info/dependencies"
+
+    @return render_template() : 
+    @rtype render_template() : template 
+    """
+    @app.route('/info/background', methods = dependencies_methdos)
+    def dependencies(): 
+
+        try: 
+            """ Check for arguments. """
+            if (request.method == 'GET'): 
+                os.system('echo web user')
+                return render_template('info/dependencies.html',style=url_for('static', filename='info/dependencies.css'))
+        except Exception as ex: 
+            return throw_exec('dependencies')
+        
+    """ Defines the quickstart route. 
+    "localhost:5000/info/quickstart"
+
+    @return render_template() : 
+    @rtype render_template() : template 
+    """
+    @app.route('/info/quickstart', methods = quickstart_methods)
+    def quickstart(): 
+
+        try: 
+            """ Check for arguments. """
+            if (request.method == 'GET'): 
+                os.system('echo web user')
+                return render_template('info/quickstart.html',style=url_for('static', filename='info/quickstart.css'))
+        except Exception as ex: 
+            return throw_exec('quickstart')
+        
 """ Sets the app instance. 
 
 @param app: The Flask application
