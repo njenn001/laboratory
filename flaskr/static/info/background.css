@@ -1,3 +1,6 @@
+/* 
+  This is the design for the body. 
+*/
 .body {
   position: absolute;
   background-color: darkgray;
@@ -17,12 +20,9 @@
   display: block;
 }
 
-.header { 
-  color: white;
-  margin: 0px; 
-  justify-content: center;
-}
-
+/*  
+  This is the design for the footer. 
+*/
 .footer {
   width: 100%;
   bottom: 0px;
@@ -34,6 +34,9 @@
   display: block;
 }
 
+/* 
+  This is the design for the containers. 
+*/
 .container{
 
   bottom: 0px;
@@ -44,6 +47,9 @@
 
 }
 
+/* 
+  This is the design for the options. 
+*/
 .option{
 
   display: block;
@@ -52,16 +58,25 @@
 
 }
 
+/* 
+  This is the design for the top header. 
+*/
 .h1{
   font-family: 'Courier New', Courier, monospace;
   font-size: 50px;
 }
 
+/* 
+  This is the deisgn for an exert. 
+*/
 .exert{
   font-family: 'Courier New', Courier, monospace;
   font-size: 20px;
 }
 
+/* 
+  This is the design for a button. 
+*/
 .button {
   color: white;
   height: 75px; 
@@ -72,12 +87,19 @@
   font-family: 'Courier New', Courier, monospace;
 }
 
+/* 
+  This is the design for the first button. 
+*/
 .button1 {
   background-color: white;
   color: black; 
   font-style: italic;
 }
 
+/* 
+  This is the design for the first button's
+  hover effect.
+*/
 .button1:hover {
   color: white;
 }
