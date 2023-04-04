@@ -61,3 +61,23 @@
   font-family: 'Courier New', Courier, monospace;
   font-size: 20px;
 }
+
+.button {
+  color: white;
+  height: 75px; 
+  width: 300px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  font-size: 24px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.button1 {
+  background-color: white;
+  color: black; 
+  font-style: italic;
+}
+
+.button1:hover {
+  color: white;
+}

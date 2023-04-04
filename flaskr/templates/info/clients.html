@@ -49,61 +49,75 @@
 
         Displays general server information: 
         > image
-        > descriptors
+        > background
     -->
     <div 
         class="option"
         style="background-color: darkgray;">
 
+        <br>
+        <br>      
+
         <!-- Image. -->
         <img 
-            src="../static/images/LAN.png",
-            style="padding-top: 75px; min-width: 300px; max-height: 700px;">
+            src="../static/images/Clients.png",
+            style="min-width: 300px; min-height: 500px;">
 
-        <br>
-        <br>
         
         <!-- 
 
-            The button option. 
+            The background option. 
 
-            Routes different actions. 
-            > redirection
+            Displays background information. 
+            > background
         -->
-        <div class="container">
+        <div class="option">
+
+            <div class="exert">
+
+                <br>
+                <br>      
+
+                <!-- A title. -->
+                <h1>
+                    TC Clients 
+                </h1>          
+
+                <!-- The text. -->
+                <div class="option">
+                    <p style="padding: 55px">
+                            The Clients are responsible for supplying various types of data to the Server. 
+                        Clients are delivered in different ways to achieve a cross-platform functionality.                        
+                    </p>
+                </div>
+
+                <br>
+                <br>
+
+                <br>
+                <br>
+
+                <!-- 
+
+                    The back arrow. 
+
+                    Allows the user the return to the previous page: 
+                    > home/info
+                -->
+                <div class="option">
+                    <a href="../info/background"> 
+                        <img 
+                            src="../static/images/back_arrow.png",
+                            style="width: 50px">
+            
+                    </a>
                     
-            <div class="option">          
-                <a href="/info/quickstart">
-                    <button class="button button1">
-                        Quickstart
-                    </button>
-                </a>
+                </div>
+
             </div>
-            <div class="option">
-                <a>
-                    <a href="/info/background">
-                    <button class="button button1">
-                        Background
-                    </button>
-                </a>
-            </div>   
-            <div class="option">
-                <a href="/info/dependencies">
-                    <button class="button button1">
-                        Dependencies 
-                    </button>
-                </a>
-            </div>
-            <div class="option">
-                <a href="https://github.com/njenn001/laboratory">
-                    <button class="button button1">
-                        GitHub
-                    </button>
-                </a>
-            </div>
-        </div>  
-        <br>
-        <br>
+
+        </div>
+         
     </div>
 {% endblock %}
 

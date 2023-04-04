@@ -52,10 +52,20 @@
 
 }
 
+.h1{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 50px;
+}
+
+.exert{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+}
+
 .button {
+  border: none;
   color: white;
   height: 75px; 
-  width: 300px;
   transition-duration: 0.4s;
   cursor: pointer;
   font-size: 24px;
@@ -63,11 +73,12 @@
 }
 
 .button1 {
-  background-color: white;
+  background-color: transparent;
   color: black; 
-  font-style: italic;
+  border: 2px solid rgb(126, 140, 154);
 }
 
 .button1:hover {
+  background-color: rgb(40, 159, 198);
   color: white;
 }
