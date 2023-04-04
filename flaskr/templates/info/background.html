@@ -58,7 +58,7 @@
         <!-- Image. -->
         <img 
             src="../static/images/LAN.png",
-            style="min-width: 300px">
+            style="padding-top: 75px; min-width: 300px; max-height: 500px;">
 
         
         <!-- 
@@ -72,13 +72,13 @@
 
             <div class="exert">
 
+                <br>
+                <br>
+
                 <!-- A title. -->
                 <h1>
                     Background
                 </h1>
-                
-                <br>
-                <br>
 
                 <!-- The text. -->
                 <div class="option">
@@ -89,27 +89,76 @@
 
                     </p>
                 </div>
+             
+            </div>      
                 
-                <!-- 
+            <!-- 
 
-                    The back arrow. 
+                The button option. 
 
-                    Allows the user the return to the previous page: 
-                    > home/info
-                -->
-                <div class="option">
-                    <a href="../info"> 
-                        <img 
-                            src="../static/images/back_arrow.png",
-                            style="width: 50px">
-            
-                    </a>
+                Routes different actions. 
+                > redirection
+            -->
+            <div class="option" style="display: flex;">
+                <div class="container" style="padding-left: 25%;">
+                    
+                    <div class="option">          
+                        <a href="../info/ap">
+                            <button class="button button1">
+                                Access Point
+                            </button>
+                        </a>
+                    </div>
+                    <div>
+                        <a>
+                            <a href="../info/server">
+                            <button class="button button1">
+                                Server
+                            </button>
+                        </a>
+                    </div>   
+                    <div class="option">
+                        <a href="../info/clients">
+                            <button class="button button1">
+                                Clients 
+                            </button>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="../info/comms">
+                            <button class="button button1">
+                                Communications
+                            </button>
+                        </a>
+                    </div>
                 </div>
 
-                <br>
-                <br>
+                    <!-- 
 
+                        The back arrow. 
+
+                        Allows the user the return to the previous page: 
+                        > home/info
+                    -->
+                    <div class="container" style="width: 60px; padding-right: 20%;">    
+                        <div class="option">
+                            <a href="../info"> 
+                                <img 
+                                    src="../static/images/back_arrow.png",
+                                    style="width: 50px">
+                    
+                            </a>
+                            
+                        </div>
+                    </div>
+
+                </div>
             </div>
+
+            <br>
+            <br>
+
+
 
         </div>
          
@@ -138,7 +187,7 @@
         class="footer">
         <p> </p>
         <p> TC Laboratories (c) 2023 </p>
-        <p> Server landing page </p>
+        <p> Network Background Page</p>
     </div>
 
 {% endblock %}

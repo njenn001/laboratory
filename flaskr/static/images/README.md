@@ -1,6 +1,6 @@
-# TC
+# Images
 
-All captured images regarding TC itself will be in this directory. 
+All captured images regarding TC intellectual property will be held in this directory. 
 
 ## Acknowledgements
 
