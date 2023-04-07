@@ -1,8 +1,2 @@
-numpy 
-cython 
 Flask 
 Flask-RESTful
-matplotlib
-pyspark
-pandas
-pytest

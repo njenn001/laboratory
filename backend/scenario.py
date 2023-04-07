@@ -372,14 +372,9 @@ class Scenario():
                     time.sleep(5)
                     
                     os.sys.execuatble = str(object.get_root_dir() + r"\venv\Scripts\python.exe")
-                    val = os.system(r'.\venv\Scripts\activate.bat')
-                    if val == 0: 
-                        
-                        print('\nActivating virtual environment ...\n')
-                        os.system(r'.\venv\Scripts\activate.bat')
-                        
-                        print('\nInstall virtual requirments ...\n')
-                        os.system(r'.\venv\Scripts\pip.exe install -r .\requirements.txt')
+
+                    print('\nInstall virtual requirments ...\n')
+                    os.system(r'.\venv\Scripts\pip.exe install -r .\requirements.txt')
 
 
                 except Exception as ex: 
@@ -393,14 +388,9 @@ class Scenario():
                     time.sleep(5)
                     
                     os.sys.execuatble = object.get_root_dir() + r"/../venv/bin/python"
-                    val = os.system(object.get_root_dir() + r'/../venv/bin/activate')
-                    if val == 0: 
-                        
-                        '''print('\nActivating virtual environment ...\n')
-                        os.system(r'./venv/bin/activate')'''
-                        
-                        print('\nInstalling virtual requirments ...\n')
-                        os.system(object.get_root_dir() + r'/../venv/bin/pip install -r requirements.txt')
+
+                    print('\nInstalling virtual requirments ...\n')
+                    os.system(object.get_root_dir() + r'/../venv/bin/pip install -r requirements.txt')
 
 
                 except Exception as ex: 
