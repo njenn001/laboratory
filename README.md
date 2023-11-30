@@ -28,7 +28,7 @@ This repository was developed in part for use during the instruction of basic an
 ## Software Requirements
 
 ```
-  - python 3.11
+  - python 3.8
 ```
 
 ## Usage 

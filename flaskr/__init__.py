@@ -69,8 +69,9 @@ def set_rules(app):
     app.add_url_rule('/info/clients', endpoint='clients')
     app.add_url_rule('/info/comms', endpoint='comms')
 
-    # Quickstart endpoints
-    app.add_url_rule('/start/sincity', endpoint='sincity')
+    # Client endpoints
+    app.add_url_rule('/sincity/auth', endpoint='sincity')
+    app.add_url_rule('/sincity/play', endpoint='sincityplay')
     
 """ Sets the error handlers on the server. 
 
@@ -103,8 +104,9 @@ def set_methods(app):
     clients_methods=['GET']
     comms_methods=['GET']
 
-    # Quickstart methods
+    # Client methods
     sincity_methods=['GET']
+    sincity_play_methods=['GET', 'POST']
 
     """ Defines the main route of the server.
     "localhost:5000/"
@@ -259,21 +261,38 @@ def set_methods(app):
             return throw_exec('comms')    
     
     """ Defines the sincity route. 
-    "localhost:5000/start/sincity"
+    "localhost:5000/sincity/auth"
 
     @return render_template() : 
     @rtype render_template() : template 
     """
-    @app.route('/start/sincity', methods = sincity_methods)
+    @app.route('/sincity/auth', methods = sincity_methods)
     def sincity(): 
 
         try: 
             """ Check for arguments. """
             if (request.method == 'GET'): 
                 os.system('echo web user')
-                return render_template('start/sincity.html',style=url_for('static', filename='start/sincity.css'))
+                return render_template('/sincity/auth.html',style=url_for('static', filename='sincity/auth.css'))
         except Exception as ex: 
-            return throw_exec('comms')    
+            return throw_exec('auth')    
+    
+    """ Defines the sincity route. 
+    "localhost:5000/sincity/play"
+
+    @return render_template() : 
+    @rtype render_template() : template 
+    """
+    @app.route('/sincity/play', methods = sincity_play_methods)
+    def sincity_play(): 
+
+        try: 
+            """ Check for arguments. """
+            if (request.method == 'GET'): 
+                os.system('echo web user')
+                return render_template('/sincity/play.html',style=url_for('static', filename='sincity/auth.css'))
+        except Exception as ex: 
+            return throw_exec('play')    
     
 """ Sets the app instance. 
 

@@ -81,8 +81,8 @@
                 <div class="option">
                     <p style="padding: 50px">
                             Players must have an existing account to exist in Sin City. 
-                            Either create an account or continue to sign in. 
-
+                            
+                            Sign in to continue.
                     </p>
                 </div>
                 
@@ -94,15 +94,24 @@
                 > redirection
                 -->
                 <div class="option" style="display: flex;">
-                  
+
                     <!-- 
 
-                        The back arrow. 
+                        User login. 
 
-                        Allows the user the return to the previous page: 
-                        > home/info
+                        Compares input credentials to db contents:
+                        - username
+                        - password 
                     -->
-                    <div class="container">    
+                    <div class="option">
+
+                        <!-- 
+
+                            The back arrow. 
+
+                            Allows the user the return to the previous page: 
+                            > home/info
+                        -->
                         <div class="option">
                             <a href="../info/quickstart"> 
                                 <img 
@@ -112,14 +121,10 @@
                             </a>
                             
                         </div>
-                    </div>
-
-                    <div class="option">
-
-                        Enter new user credentials:
 
                         <br>
 
+                        <!-- Username input. -->
                         <div class="container" style="display: flex;">
                         
                             <label class="labels">username
@@ -128,6 +133,7 @@
                         
                         </div>
                         
+                        <!-- Password input. -->
                         <div class="container" style="display: flex;">
                         
                             <label class="labels">password
@@ -138,6 +144,7 @@
 
                         <br>
                         
+                        <!-- Submit button. -->
                         <div class="option">          
                             <a href="../start/sincity">
                                 <button class="button button1">
@@ -146,25 +153,6 @@
                             </a>
                         </div>
 
-                    </div>
-
-                    <!-- 
-
-                        The forward arrow. 
-
-                        Allows the user the return to the previous page: 
-                        > home/info
-                    -->
-                    <div class="container">    
-                        <div class="option">
-                            <a href="../sincity"> 
-                                <img 
-                                    src="../static/images/back_arrow.png",
-                                    style="width: 50px; transform: rotate(180deg);">
-                    
-                            </a>
-                            
-                        </div>
                     </div>
 
                 </div>
