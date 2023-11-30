@@ -71,7 +71,7 @@
 
                 <!-- A title. -->
                 <h1>
-                    Quickstart
+                    Server Authorization
                 </h1>
                 
                 <br>
@@ -80,9 +80,8 @@
                 <!-- The text. -->
                 <div class="option">
                     <p style="padding: 50px">
-                            The quickstart option is used by administrative personel to start the server. This will 
-                        allow client applications and other machines to communicate with the server and utilize it's
-                        capabilities.
+                            Players must have an existing account to exist in Sin City. 
+                            Either create an account or continue to sign in. 
 
                     </p>
                 </div>
@@ -95,38 +94,79 @@
                 > redirection
                 -->
                 <div class="option" style="display: flex;">
-                    <div class="container" style="padding-left: 25%;">
+                  
+                    <!-- 
+
+                        The back arrow. 
+
+                        Allows the user the return to the previous page: 
+                        > home/info
+                    -->
+                    <div class="container">    
+                        <div class="option">
+                            <a href="../info/quickstart"> 
+                                <img 
+                                    src="../static/images/back_arrow.png",
+                                    style="width: 50px;">
+                    
+                            </a>
+                            
+                        </div>
+                    </div>
+
+                    <div class="option">
+
+                        Enter new user credentials:
+
+                        <br>
+
+                        <div class="container" style="display: flex;">
+                        
+                            <label class="labels">username
+                            </label>
+                            <input class="input">
+                        
+                        </div>
+                        
+                        <div class="container" style="display: flex;">
+                        
+                            <label class="labels">password
+                            </label>
+                            <input class="input">
+                        
+                        </div>
+
+                        <br>
                         
                         <div class="option">          
                             <a href="../start/sincity">
                                 <button class="button button1">
-                                    Sin City
+                                    Submit
                                 </button>
                             </a>
                         </div>
 
                     </div>
 
-                        <!-- 
+                    <!-- 
 
-                            The back arrow. 
+                        The forward arrow. 
 
-                            Allows the user the return to the previous page: 
-                            > home/info
-                        -->
-                        <div class="container" style="width: 60px; padding-right: 20%;">    
-                            <div class="option">
-                                <a href="../info"> 
-                                    <img 
-                                        src="../static/images/back_arrow.png",
-                                        style="width: 50px">
-                        
-                                </a>
-                                
-                            </div>
+                        Allows the user the return to the previous page: 
+                        > home/info
+                    -->
+                    <div class="container">    
+                        <div class="option">
+                            <a href="../sincity"> 
+                                <img 
+                                    src="../static/images/back_arrow.png",
+                                    style="width: 50px; transform: rotate(180deg);">
+                    
+                            </a>
+                            
                         </div>
-
                     </div>
+
                 </div>
 
                 <br>

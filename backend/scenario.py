@@ -384,7 +384,7 @@ class Scenario():
 
 
                     print('\nCreating virtual environment ...\n') 
-                    os.system(r"python -m  venv " + object.get_root_dir() + r"/../venv")
+                    os.system(r"python3.8 -m  venv " + object.get_root_dir() + r"/../venv")
                     time.sleep(5)
                     
                     os.sys.execuatble = object.get_root_dir() + r"/../venv/bin/python"
@@ -392,6 +392,7 @@ class Scenario():
                     print('\nInstalling virtual requirments ...\n')
                     os.system(object.get_root_dir() + r'/../venv/bin/pip install -r requirements.txt')
 
+                    
 
                 except Exception as ex: 
                     object.throw_exc('venv')
@@ -475,7 +476,7 @@ class Scenario():
         print('\nChecking Python Version ...')
         
         self.set_py_version(float( str(os.sys.version_info[0]) + "." + str(os.sys.version_info[1]) )) 
-        if self.get_py_version() != 3.11:
+        if self.get_py_version() != 3.8:
             self.throw_exc('version')
         else: 
             print('\nCorrect Python version.')

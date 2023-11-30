@@ -73,3 +73,34 @@
   font-family: 'Courier New', Courier, monospace;
   font-size: 20px;
 }
+
+/* 
+  This is the design for a button. 
+*/
+.button {
+  color: white;
+  height: 75px; 
+  width: 300px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  font-size: 24px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* 
+  This is the design for the first button. 
+*/
+.button1 {
+  background-color: white;
+  color: black; 
+  font-style: italic;
+}
+
+/* 
+  This is the design for the first button's
+  hover effect.
+*/
+.button1:hover {
+  color: white;
+}
+

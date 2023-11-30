@@ -7,23 +7,23 @@ from backend.scenario import Scenario
 
 """ TC API Logo. """
 logo = (r''' 
-  _____________________________________             _______________________
- |                                     |           /                       |
- |                                     |          /                        |
- \ ____________________________________/         /                         |
-                |       |                       /                          |
-                |       |                      /        /------------------|
-                |       |                     |        |
-                |       |        |--------|   |        |
-                |       |        |--------|   |        |
-                |       |                      \        \------------------|
-                |       |                       \                          |
-                |       |                        \                         |
-                |       |                         \                        |
-                \ _____ /                          \ ______________________|
- -----------------------------------------------------------------------------------
-|                                                                                   |
- -----------------------------------------------------------------------------------
+  _____________________________  
+ |                             | 
+ |                             | 
+ |___________       ___________| 
+            |       |       ___________________
+            |       |      |                   |
+            |       |      |     ___________   |
+            |       |      |     |         |___|
+            |       |      |     |
+            |       |      |     |          ___
+            |       |      |     |_________|   |
+            |       |      |                   |
+            |_______|      |___________________|
+
+ -----------------------------------------------------
+|    Laboratory Application Programming Interface     |
+ -----------------------------------------------------
 ''')
 
 """ Shows the logo. 
@@ -87,7 +87,20 @@ def update_server_info():
 @return null
 """
 def start_server_info(): 
-    print()
+    resetScreen()
+
+    print() 
+    print(
+
+        " To start the TC Laboratory Application Programming \n"
+        "Interface (LAPI), execute this program again, but instead\n"
+        "of the help flag, specify the virtual flag. This will\n"
+        "create the virtual structure necessary to correctly\n"
+        "run LAPI by downloading all required packages. Once the\n"
+        "virtual environment is activated with clear, you can\n"
+        "now run LAPI on port 5000."
+        
+    )
 
 """ Displays user information. 
 
@@ -99,8 +112,10 @@ def user_info():
     print() 
     print(
 
-        "   User credentials should be stored in the admin.csv file.\n"
-        "TC Engineers have provided a static file location for this.\n"
+        "   User credentials should be stored in the admin.csv \n"
+        "file. TC Engineers have provided a static file location\n"
+        "for this.\n\n"
+        
         "Please do NOT move it."
 
     )
@@ -148,8 +163,6 @@ def help():
             start_server_info()
             input() 
 
-
-
 """ Gives some background on the application. 
 
 @return null
@@ -160,13 +173,15 @@ def background():
 
     print(
 
-        "   The TC Lab API is an application programming interface utilizing the Flask\n"
-        "framework. This open source technology allowed TC technology to react to various\n"
-        "activities occuring on other nodes on the network. The reason for implementing\n"
-        "this as a development server is because of is range of application. Flask APIs\n"
-        "are rather readable, dependable, extendable, and handy teaching tools. Many\n"
-        "instruments and devices on the TC network will communicate through this API using\n"
-        "common HTTP methods. "
+        "   The TC Lab API is an application programming interface\n"
+        "utilizing the Flask framework. This open source technology\n"
+        "allowed TC technology to react to various activities\n"
+        "occuring on other nodes on the network. The reason for\n"
+        "implementing this as a development server is because of\n"
+        "is range of application. Flask APIs are rather readable, \n"
+        "dependable, extendable, and handy teaching tools. Many\n"
+        "instruments and devices on the TC network will communicate\n"
+        "through this API using common HTTP methods. "
     )
 
 """ Describes available utilities and scenarios. 
@@ -180,14 +195,12 @@ def utilities():
     print()
     print(
 
-        "The following utilities will be facilitated through this API.\n"
-        "Client applications will be provided seperately.\n"
-        "\n1) Walkie Talkies\n"
-        "2) Online Games\n"
-        "3) Music Library\n"
-        "4) System assistant\n"
-
-
+        "The following utilities will be facilitated through  \n"
+        "this API. Client applications will be provided seperately.\n\n"
+        "1) Sin City\n"
+        "\n"
+        "Sin City is an online, open-world fantasy game, driven \n"
+        "by survival mechanics, random encounters, and dark twists!"
     )
 
 """ Runs the menu. 
@@ -218,7 +231,6 @@ def menu():
             background() 
             input()
     
-
 """ Displays project information. 
 
 @return null

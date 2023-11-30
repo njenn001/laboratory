@@ -55,7 +55,11 @@ def throw_exec(msg):
 @type app: app
 """
 def set_rules(app):
+
+    # Index endpoint
     app.add_url_rule('/index', endpoint='index')
+    
+    # Information endpoints
     app.add_url_rule('/info', endpoint='info')
     app.add_url_rule('/info/background', endpoint='background')
     app.add_url_rule('/info/dependencies', endpoint='dependencies')
@@ -64,6 +68,9 @@ def set_rules(app):
     app.add_url_rule('/info/server', endpoint='server')
     app.add_url_rule('/info/clients', endpoint='clients')
     app.add_url_rule('/info/comms', endpoint='comms')
+
+    # Quickstart endpoints
+    app.add_url_rule('/start/sincity', endpoint='sincity')
     
 """ Sets the error handlers on the server. 
 
@@ -83,7 +90,10 @@ def set_errors(app):
 """
 def set_methods(app): 
 
+    # Index method
     index_methods = ['GET']
+    
+    # Information methods
     info_methods = ['GET']
     background_methods = ['GET']
     dependencies_methdos = ['GET']
@@ -92,6 +102,9 @@ def set_methods(app):
     server_methods=['GET']
     clients_methods=['GET']
     comms_methods=['GET']
+
+    # Quickstart methods
+    sincity_methods=['GET']
 
     """ Defines the main route of the server.
     "localhost:5000/"
@@ -242,6 +255,23 @@ def set_methods(app):
             if (request.method == 'GET'): 
                 os.system('echo web user')
                 return render_template('info/comms.html',style=url_for('static', filename='info/comms.css'))
+        except Exception as ex: 
+            return throw_exec('comms')    
+    
+    """ Defines the sincity route. 
+    "localhost:5000/start/sincity"
+
+    @return render_template() : 
+    @rtype render_template() : template 
+    """
+    @app.route('/start/sincity', methods = sincity_methods)
+    def sincity(): 
+
+        try: 
+            """ Check for arguments. """
+            if (request.method == 'GET'): 
+                os.system('echo web user')
+                return render_template('start/sincity.html',style=url_for('static', filename='start/sincity.css'))
         except Exception as ex: 
             return throw_exec('comms')    
     
