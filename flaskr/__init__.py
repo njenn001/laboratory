@@ -10,9 +10,12 @@ import json
 import os
 from urllib import request
 from flask import * 
- 
+import sqlite3
+
 """ Class imports. """
 from backend.server import Server
+from . import db
+from . import auth
 
 """ Throws exception. 
 
@@ -105,7 +108,7 @@ def set_methods(app):
     comms_methods=['GET']
 
     # Client methods
-    sincity_methods=['GET']
+    sincity_methods=['GET', 'POST']
     sincity_play_methods=['GET', 'POST']
 
     """ Defines the main route of the server.
@@ -269,10 +272,31 @@ def set_methods(app):
     @app.route('/sincity/auth', methods = sincity_methods)
     def sincity(): 
 
+
         try: 
+            connect = sqlite3.connect(r'./instance/flaskr.sqlite')
+            cursor = connect.cursor()
+            cursor.execute('SELECT * FROM USER')
+
+            data = cursor.fetchall() 
+
             """ Check for arguments. """
+            if (request.method == 'POST'): 
+                u = request.form['username']
+                p = request.form['password']
+                
+                for user in data:
+                    if u in user: 
+                        
+                        if user[2] == p:
+                            return render_template('/sincity/play.html',style=url_for('static', filename='sincity/play.css'), result=u) 
+                        else: 
+                            return render_template('/sincity/auth.html',style=url_for('static', filename='sincity/auth.css'), result=['Incorrect Password.']) 
+                    else: 
+                        return render_template('/sincity/auth.html',style=url_for('static', filename='sincity/auth.css'), result=['User does not exist.']) 
+
             if (request.method == 'GET'): 
-                os.system('echo web user')
+                os.system('echo web user 1')
                 return render_template('/sincity/auth.html',style=url_for('static', filename='sincity/auth.css'))
         except Exception as ex: 
             return throw_exec('auth')    
@@ -349,6 +373,10 @@ def create_app(test_config=None):
     set_methods(app)
     set_rules(app)
     set_errors(app)
+
+    """ Database and Blueprints. """
+    db.init_app(app)
+    app.register_blueprint(auth.bp)
 
     """ Returns the configure application. """
     return app

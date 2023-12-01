@@ -25,51 +25,22 @@ This repository was developed in part for use during the instruction of basic an
   - Parallelism 
 
 
-## Software Requirements
+## Software/OS Requirements
 
 ```
+  - Ubuntu 22.04.3 LTS
   - python 3.8
 ```
 
 ## Usage 
 
-The server is spun by simply pulling the repo and using one of the starting methods (machine dependent). Please satisfy listed software requirements prior to running the server. 
+The server is spun by simply pulling the repo and using one of the starting methods. Please confirm listed software requirements have been downloaded prior to starting the server. 
 
-### Windows machines 
-
-Clone the repository 
+Clone and enter the repository 
 
 ```
 git clone https://github.com/njenn001/laboratory.git
-```
-
-System configurations
-```
-set FLASK_APP=flaskr
-set FLASK_ENV=development
-```
-
-Initialize the virtual environment
-```
-python __init__.py --v
-```
-
-Activate the virtual environment 
-```
-.\venv\Scripts\activate
-```
-
-Start the server
-```
-python __init__.py --r
-```
-
-### Linux machines 
-
-Clone the repository 
-
-```
-git clone https://github.com/njenn001/laboratory.git
+cd laboratory
 ```
 
 System configurations 
@@ -85,12 +56,18 @@ python __init__.py --v
 
 Activate the virtual environment 
 ```
-.\venv\Scripts\activate
+source .\venv\bin\activate
 ```
 
 Start the server
 ```
 python __init__.py --r
+```
+
+Initialize the database 
+* From within the root dir
+```
+flask --app flaskr init-db
 ```
 
 ## Acknowledgements
