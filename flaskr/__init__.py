@@ -100,12 +100,15 @@ def set_methods(app):
     # Information methods
     info_methods = ['GET']
     background_methods = ['GET']
-    dependencies_methdos = ['GET']
     quickstart_methods = ['GET', 'POST']
     ap_methods=['GET']
     server_methods=['GET']
     clients_methods=['GET']
     comms_methods=['GET']
+
+    # Research methods 
+    dependencies_methdos = ['GET', 'POST']
+    menu_methods = ['GET', 'POST']
 
     # Client methods
     sincity_methods=['GET', 'POST']
@@ -161,24 +164,65 @@ def set_methods(app):
                 return render_template('info/background.html',style=url_for('static', filename='info/background.css'))
         except Exception as ex: 
             return throw_exec('background')
-        
+     
     """ Defines the dependencies route. 
     "localhost:5000/info/dependencies"
 
     @return render_template() : 
     @rtype render_template() : template 
     """
-    @app.route('/info/background', methods = dependencies_methdos)
+    @app.route('/dep/auth', methods = dependencies_methdos)
     def dependencies(): 
+
+        try: 
+            """ Check for POST argument. """
+            if (request.method == 'POST'): 
+                
+                """ Grab db data. """
+                connect = sqlite3.connect(r'./instance/flaskr.sqlite')
+                cursor = connect.cursor()
+                cursor.execute('SELECT * FROM USERS')    
+
+                data = cursor.fetchall() 
+                u = request.form['username']
+                p = request.form['password']
+                
+                """ Check user data. """
+                for user in data:
+                    if u in user: 
+                        
+                        if user[2] == p:
+                            print('User login')
+                            return render_template('/dep/menu.html',style=url_for('static', filename='dep/menu.css'), result=u) 
+                        else: 
+                            return render_template('/dep/auth.html',style=url_for('static', filename='dep/auth.css'), result=['Incorrect Password.']) 
+                    else: 
+                        return render_template('/dep/auth.html',style=url_for('static', filename='dep/auth.css'), result=['User does not exist.']) 
+
+            """ Check for GET argument. """
+            if (request.method == 'GET'): 
+                os.system('echo web user 1')
+                return render_template('/dep/auth.html',style=url_for('static', filename='dep/auth.css'))
+        except Exception as ex: 
+            return throw_exec('auth')
+           
+    """ Defines the menu route. 
+    "localhost:5000/dep/menu"
+
+    @return render_template() : 
+    @rtype render_template() : template 
+    """
+    @app.route('/dep/menu', methods = menu_methods)
+    def menu(): 
 
         try: 
             """ Check for arguments. """
             if (request.method == 'GET'): 
                 os.system('echo web user')
-                return render_template('info/dependencies.html',style=url_for('static', filename='info/dependencies.css'))
+                return render_template('/dep/menu.html',style=url_for('static', filename='dep/menu.css'))
         except Exception as ex: 
-            return throw_exec('dependencies')
-        
+            return throw_exec('play')    
+    
     """ Defines the quickstart route. 
     "localhost:5000/info/quickstart"
 
@@ -274,27 +318,31 @@ def set_methods(app):
 
 
         try: 
-            connect = sqlite3.connect(r'./instance/flaskr.sqlite')
-            cursor = connect.cursor()
-            cursor.execute('SELECT * FROM USER')
-
-            data = cursor.fetchall() 
-
-            """ Check for arguments. """
+            """ Check for POST argument. """
             if (request.method == 'POST'): 
+                
+                """ Grab db data. """
+                connect = sqlite3.connect(r'./instance/flaskr.sqlite')
+                cursor = connect.cursor()
+                cursor.execute('SELECT * FROM USERS')    
+
+                data = cursor.fetchall() 
                 u = request.form['username']
                 p = request.form['password']
                 
+                """ Check user data. """
                 for user in data:
                     if u in user: 
                         
                         if user[2] == p:
+                            print('User login')
                             return render_template('/sincity/play.html',style=url_for('static', filename='sincity/play.css'), result=u) 
                         else: 
                             return render_template('/sincity/auth.html',style=url_for('static', filename='sincity/auth.css'), result=['Incorrect Password.']) 
                     else: 
                         return render_template('/sincity/auth.html',style=url_for('static', filename='sincity/auth.css'), result=['User does not exist.']) 
 
+            """ Check for GET argument. """
             if (request.method == 'GET'): 
                 os.system('echo web user 1')
                 return render_template('/sincity/auth.html',style=url_for('static', filename='sincity/auth.css'))

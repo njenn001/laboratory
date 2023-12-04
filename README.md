@@ -64,6 +64,10 @@ Start the server
 python __init__.py --r
 ```
 
+### Fresh Installations
+
+The database this API stands on will need to be initialized and populated, outlined in this section. This will help ensure server integrity and reproducibility. 
+
 Initialize the database 
 * From within the root dir
 ```

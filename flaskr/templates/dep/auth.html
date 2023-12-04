@@ -1,5 +1,5 @@
 <!-- 
-    Sin City. 
+    The auth page. 
 
     This file extends the base.html structure:
     > content 
@@ -12,9 +12,8 @@
     The content block. 
 
     Used to display the current pages information:
-    > user
-    > character 
-    > world
+    > navbar
+    > buttons
 -->
 {% block content %}
 
@@ -72,7 +71,7 @@
 
                 <!-- A title. -->
                 <h1>
-                    Sin City
+                    Server Authorization
                 </h1>
                 
                 <br>
@@ -81,13 +80,30 @@
                 <!-- The text. -->
                 <div class="option">
                     <p style="padding: 50px">
-                            Welcome to Sin City, {{result}}. 
+                            Researchers must have an existing account to satisfy different 
+                            software requirements or manipulate database entries. 
+
+                            Sign in to continue. 
                     </p>
                 </div>
                 
+                <!-- 
+
+                The button option. 
+
+                Routes different actions. 
+                > redirection
+                -->
                 <div class="option" style="display: flex;">
 
-                   
+                    <!-- 
+
+                        User login. 
+
+                        Compares input credentials to db contents:
+                        - username
+                        - password 
+                    -->
                     <div class="option">
 
                         <!-- 
@@ -98,7 +114,7 @@
                             > home/info
                         -->
                         <div class="option">
-                            <a href="../sincity/auth"> 
+                            <a href="../info"> 
                                 <img 
                                     src="../static/images/back_arrow.png",
                                     style="width: 50px;">
@@ -109,7 +125,27 @@
 
                         <br>
                         
-                        
+                        <!-- Submit button. -->
+                        <div class="option" style="display: flex;">         
+                            <form method="post">
+                                
+                                <!-- Username input. -->
+                                <label for="username">Username</label>
+                                <input name="username" id="username" required>
+                                
+                                <br>
+                                 
+                                <!-- Password input. -->
+                                <label for="password">Password</label>
+                                <input type="password" name="password" id="password" required>
+                                
+                                <br> 
+                                <br>
+                                
+                                <!-- Submit button . -->
+                                <input type="submit" value="Submit">
+                            </form>
+                        </div>
 
                     </div>
 
@@ -134,6 +170,12 @@
     > behind-the-scenes
 -->
 {% block footer %}
+
+    {% for item in result %}
+        <h1 style="color: red;">
+            {{item}}
+        </h1>
+    {% endfor %}
 
     <!--
 
