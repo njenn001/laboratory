@@ -24,7 +24,7 @@ CREATE TABLE administrators (
 
 -- Create the map table.
 CREATE TABLE maps (
-    id INTEGER PRIMARY KEY, 
+    id INTEGER NOT NULL, 
     row_id INTEGER NOT NULL,
     row_content TEXT NOT NULL
 ); 

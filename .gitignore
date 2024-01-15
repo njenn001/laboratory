@@ -1,12 +1,9 @@
 venv/
 dist/ 
 build/
+instance/
+*.vscode/
 
 *.pyc
 *__pycache__
 *.pytest_cache
-*__pycache__
-
-instance/
-*.vscode/
-

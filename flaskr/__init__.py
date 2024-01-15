@@ -17,6 +17,9 @@ from backend.server import Server
 from . import db
 from . import auth
 
+""" Paths. """
+db_path = (r'./instance/flaskr.sqlite')
+
 """ Throws exception. 
 
 @param msg : The message. 
@@ -87,6 +90,21 @@ def set_errors(app):
     def page_not_found(error):
         return render_template('404.html'), 404
 
+
+""" Reads all stored users. 
+
+@return cursor.fetchall() : All found data 
+@rtype cursor.fetchall() : method
+"""
+def read_users():
+    print(db_path)
+    """ Grab db data. """
+    connect = sqlite3.connect(db_path)
+    cursor = connect.cursor()
+    cursor.execute('SELECT * FROM USERS')  
+
+    return cursor.fetchall()
+
 """ Sets the server methods. 
 
 @param app: The Flask application
@@ -117,8 +135,8 @@ def set_methods(app):
     """ Defines the main route of the server.
     "localhost:5000/"
             
-    :return render_template() : A template rendering or json response.
-    :rtype render_template() : template
+    @return render_template() : A template rendering or json response.
+    @rtype render_template() : template
     """
     @app.route('/', methods = index_methods)
     def index():
@@ -177,18 +195,14 @@ def set_methods(app):
         try: 
             """ Check for POST argument. """
             if (request.method == 'POST'): 
-                
-                """ Grab db data. """
-                connect = sqlite3.connect(r'./instance/flaskr.sqlite')
-                cursor = connect.cursor()
-                cursor.execute('SELECT * FROM USERS')    
-
-                data = cursor.fetchall() 
+                  
+                """ Variables. """
+                users = read_users()
                 u = request.form['username']
                 p = request.form['password']
                 
                 """ Check user data. """
-                for user in data:
+                for user in users:
                     if u in user: 
                         
                         if user[2] == p:
@@ -316,18 +330,13 @@ def set_methods(app):
     @app.route('/sincity/auth', methods = sincity_methods)
     def sincity(): 
 
-
         try: 
             """ Check for POST argument. """
             if (request.method == 'POST'): 
                 
-                """ Grab db data. """
-                connect = sqlite3.connect(r'./instance/flaskr.sqlite')
-                cursor = connect.cursor()
-                cursor.execute('SELECT * FROM USERS')    
-
-                data = cursor.fetchall() 
-                u = request.form['username']
+                """ Variables. """
+                data = read_users()
+                u = str(request.form['username'])
                 p = request.form['password']
                 
                 """ Check user data. """
@@ -347,7 +356,8 @@ def set_methods(app):
                 os.system('echo web user 1')
                 return render_template('/sincity/auth.html',style=url_for('static', filename='sincity/auth.css'))
         except Exception as ex: 
-            return throw_exec('auth')    
+            print(ex)   
+            return render_template('/sincity/auth.html',style=url_for('static', filename='sincity/auth.css'), result=['User does not exist.']) 
     
     """ Defines the sincity route. 
     "localhost:5000/sincity/play"
@@ -362,7 +372,7 @@ def set_methods(app):
             """ Check for arguments. """
             if (request.method == 'GET'): 
                 os.system('echo web user')
-                return render_template('/sincity/play.html',style=url_for('static', filename='sincity/auth.css'))
+                return render_template('/sincity/play.html',style=url_for('static', filename='sincity/play.css'))
         except Exception as ex: 
             return throw_exec('play')    
     
